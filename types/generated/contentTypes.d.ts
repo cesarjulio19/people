@@ -689,6 +689,11 @@ export interface ApiGroupGroup extends Schema.CollectionType {
   };
   attributes: {
     nombre: Attribute.String;
+    people: Attribute.Relation<
+      'api::group.group',
+      'oneToMany',
+      'api::person.person'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -707,12 +712,13 @@ export interface ApiGroupGroup extends Schema.CollectionType {
   };
 }
 
-export interface ApiUsuarioUsuario extends Schema.CollectionType {
-  collectionName: 'usuarios';
+export interface ApiPersonPerson extends Schema.CollectionType {
+  collectionName: 'people';
   info: {
-    singularName: 'usuario';
-    pluralName: 'usuarios';
-    displayName: 'usuario';
+    singularName: 'person';
+    pluralName: 'people';
+    displayName: 'people';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -720,18 +726,25 @@ export interface ApiUsuarioUsuario extends Schema.CollectionType {
   attributes: {
     nombre: Attribute.String;
     apellidos: Attribute.String;
-    genero: Attribute.String;
+    email: Attribute.Email;
+    fecha_nacimiento: Attribute.Date;
+    genero: Attribute.Enumeration<['male', 'female', 'other']>;
+    grupoId: Attribute.Relation<
+      'api::person.person',
+      'manyToOne',
+      'api::group.group'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::usuario.usuario',
+      'api::person.person',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::usuario.usuario',
+      'api::person.person',
       'oneToOne',
       'admin::user'
     > &
@@ -756,7 +769,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::group.group': ApiGroupGroup;
-      'api::usuario.usuario': ApiUsuarioUsuario;
+      'api::person.person': ApiPersonPerson;
     }
   }
 }
