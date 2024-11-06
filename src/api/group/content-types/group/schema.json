@@ -4,21 +4,22 @@
   "info": {
     "singularName": "group",
     "pluralName": "groups",
-    "displayName": "group"
+    "displayName": "group",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "nombre": {
+    "name": {
       "type": "string"
     },
     "people": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::person.person",
-      "mappedBy": "grupoId"
+      "mappedBy": "group"
     }
   }
 }

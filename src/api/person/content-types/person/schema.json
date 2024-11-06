@@ -12,19 +12,19 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "nombre": {
+    "name": {
       "type": "string"
     },
-    "apellidos": {
+    "surname": {
       "type": "string"
     },
     "email": {
       "type": "email"
     },
-    "fecha_nacimiento": {
+    "birthdate": {
       "type": "date"
     },
-    "genero": {
+    "gender": {
       "type": "enumeration",
       "enum": [
         "male",
@@ -32,7 +32,7 @@
         "other"
       ]
     },
-    "grupoId": {
+    "group": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::group.group",

@@ -368,12 +368,13 @@ export interface ApiGroupGroup extends Schema.CollectionType {
     singularName: 'group';
     pluralName: 'groups';
     displayName: 'group';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    nombre: Attribute.String;
+    name: Attribute.String;
     people: Attribute.Relation<
       'api::group.group',
       'oneToMany',
@@ -409,12 +410,12 @@ export interface ApiPersonPerson extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    nombre: Attribute.String;
-    apellidos: Attribute.String;
+    name: Attribute.String;
+    surname: Attribute.String;
     email: Attribute.Email;
-    fecha_nacimiento: Attribute.Date;
-    genero: Attribute.Enumeration<['male', 'female', 'other']>;
-    grupoId: Attribute.Relation<
+    birthdate: Attribute.Date;
+    gender: Attribute.Enumeration<['male', 'female', 'other']>;
+    group: Attribute.Relation<
       'api::person.person',
       'manyToOne',
       'api::group.group'
