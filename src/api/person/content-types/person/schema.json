@@ -18,9 +18,6 @@
     "surname": {
       "type": "string"
     },
-    "email": {
-      "type": "email"
-    },
     "birthdate": {
       "type": "date"
     },

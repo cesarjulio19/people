@@ -412,7 +412,6 @@ export interface ApiPersonPerson extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     surname: Attribute.String;
-    email: Attribute.Email;
     birthdate: Attribute.Date;
     gender: Attribute.Enumeration<['male', 'female', 'other']>;
     group: Attribute.Relation<
